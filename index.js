@@ -14,3 +14,17 @@ function createEmployeeRecord(array){
 function createEmployeeRecords(arrays) {
     return arrays.map(createEmployeeRecord)
 }
+
+function createDTSObject (getType, dateStamp) {
+    return {type: getType, date: dateStamp.slice(0,10), hour: parseInt(dateStamp.slice(-4))}
+}
+
+function createTimeInEvent(object, dateStamp) {
+    object.timeInEvents.push(createDTSObject("TimeIn", dateStamp))
+    return object
+}
+
+function createTimeOutEvent(object, dateStamp) {
+    object.timeOutEvents.push(createDTSObject("TimeOut", dateStamp))
+    return object
+}
